@@ -132,7 +132,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Yelp" id="UtI-k7-9UM">
-                        <barButtonItem key="leftBarButtonItem" title="Filters" id="6jv-df-VoI"/>
+                        <barButtonItem key="leftBarButtonItem" title="Filters" id="6jv-df-VoI">
+                            <connections>
+                                <segue destination="kQl-ub-7cF" kind="modal" id="9UE-lE-upD"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="iR0-62-XKp" id="Dov-Bu-aKC"/>
@@ -145,7 +149,7 @@
         <!--Filters-->
         <scene sceneID="9zL-on-v2Y">
             <objects>
-                <viewController id="R57-eH-0UJ" sceneMemberID="viewController">
+                <viewController id="R57-eH-0UJ" customClass="FiltersViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I3p-rZ-yyw"/>
                         <viewControllerLayoutGuide type="bottom" id="KVl-Vc-Ehr"/>
@@ -187,9 +191,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Filters" id="Dvn-cW-dje">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="jjt-WG-hQi"/>
-                        <barButtonItem key="rightBarButtonItem" title="Search" id="NSY-nw-upN"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="jjt-WG-hQi">
+                            <connections>
+                                <action selector="onCancelButton:" destination="R57-eH-0UJ" id="IW4-WP-snd"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Search" id="NSY-nw-upN">
+                            <connections>
+                                <action selector="onSearchButton:" destination="R57-eH-0UJ" id="Jq6-v1-W0x"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="7rq-8Q-gIQ" id="5lu-86-wM3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OuC-qQ-KDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

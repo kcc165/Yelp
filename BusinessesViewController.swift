@@ -8,15 +8,40 @@
 
 import UIKit
 
-class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     var businesses: [Business]!
+    var searchBar: UISearchBar = UISearchBar()
+    var endpoint: String!
+    
+    
+    
+    
+
+    
     
     @IBOutlet weak var tableView: UITableView!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        searchBar.sizeToFit()
+        navigationItem.titleView = searchBar
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -69,6 +94,17 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         return cell
         
     }
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        endpoint = searchBar.text
+        Business.searchWithTerm((endpoint), completion: { (businesses: [Business]!, error: NSError!) -> Void in
+            self.businesses = businesses
+            self.tableView.reloadData()
+        
+    
+    })
+    }
+    
+    
     /*
     // MARK: - Navigation
 
